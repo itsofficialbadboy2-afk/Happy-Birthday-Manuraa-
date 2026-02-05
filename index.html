@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Birthday Quest ✨</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="bg-stars"></div>
+
+    <div id="level-bar">
+        <div class="node active" id="node-1">🚩</div>
+        <div class="node" id="node-2">⚡</div>
+        <div class="node" id="node-3">💖</div>
+        <div class="node" id="node-4">🕊️</div>
+        <div class="node" id="node-5">🎂</div>
+        <div class="node" id="node-6">🧩</div>
+        <div class="node" id="node-7">✉️</div>
+    </div>
+
+    <main id="game-wrapper">
+        <section id="stage-1" class="stage active">
+            <h1 class="pixel-text">THE BIRTHDAY QUEST</h1>
+            <div class="envelope" onclick="startQuest()">
+                <div class="flap"></div>
+                <div class="heart-seal">❤</div>
+            </div>
+            <p class="hint">TAP ENVELOPE TO START</p>
+        </section>
+
+        <section id="stage-2" class="stage">
+            <h1 class="pixel-text">CHARGE WITH LOVE</h1>
+            <div id="charge-heart" class="big-heart">❤</div>
+            <div class="bar-container"><div id="bar-fill"></div></div>
+            <p class="hint">HOLD THE HEART MANURAA</p>
+        </section>
+
+        <section id="stage-3" class="stage">
+            <h1 class="pixel-text">CATCH 23 HEARTS MANURAA</h1>
+            <canvas id="canvas-catch"></canvas>
+            <div class="score">Hearts: <span id="score-catch">0</span>/23</div>
+        </section>
+
+        <section id="stage-4" class="stage">
+            <h1 class="pixel-text">FLAPPY HEART</h1>
+            <canvas id="canvas-fly"></canvas>
+            <div class="score">Score: <span id="score-fly">0</span>/5</div>
+        </section>
+
+        <section id="stage-5" class="stage">
+            <h1 class="pixel-text">CAKE RUSH</h1>
+            <canvas id="canvas-snake"></canvas>
+            <div class="score">Cakes: <span id="score-snake">0</span>/5</div>
+            <div id="v-pad">
+                <button class="pad-btn up" onclick="setSnakeDir(0,-1)">▲</button>
+                <button class="pad-btn left" onclick="setSnakeDir(-1,0)">◀</button>
+                <button class="pad-btn right" onclick="setSnakeDir(1,0)">▶</button>
+                <button class="pad-btn down" onclick="setSnakeDir(0,1)">▼</button>
+            </div>
+        </section>
+
+        <section id="stage-6" class="stage">
+            <h1 class="pixel-text">MATCH THE PAIRS</h1>
+            <div id="memory-grid"></div>
+        </section>
+
+        <section id="stage-7" class="stage">
+            <h1 class="pixel-text">YOU DID IT MANURAA!</h1>
+            <div class="envelope" onclick="openFinalLetter()">
+                <div class="flap" id="final-flap"></div>
+                <div class="heart-seal">❤</div>
+            </div>
+            <p class="hint">OPEN YOUR LETTER</p>
+        </section>
+    </main>
+
+    <div id="letter-modal" class="modal">
+        <div class="letter-box">
+            <h2 style="color:#ff4d6d">My Birthday Girl,</h2>
+            <p id="typewriter"></p>
+            <button onclick="location.reload()" class="retry-btn">↺ PLAY AGAIN</button>
+        </div>
+    </div>
+
+    <button id="mute-btn" onclick="toggleMute()" style="position: fixed; bottom: 10px; right: 10px; z-index: 3000; background: white; border: 2px solid #333; padding: 5px 10px; font-family: 'VT323'; cursor: pointer; border-radius: 5px;">🎵 ON</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
